@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.edmgroup.co.uk/edmapi" elementFormDefault="qualified" targetNamespace="http://www.edmgroup.co.uk/edmapi" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EDM.API.AccessControl.Model" />
+  <xs:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/EDM.WebServices.DataContracts" />
+  <xs:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/EDM.WebServices.External.EDMOnline.Contracts" />
+  <xs:element name="DocumentSearch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EDM.API.AccessControl.Model" minOccurs="0" name="credentials" nillable="true" type="q1:Credentials" />
+        <xs:element minOccurs="0" name="companyId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="documentType" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/EDM.WebServices.DataContracts" minOccurs="0" name="searchData" nillable="true" type="q2:ArrayOfDataField" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/EDM.WebServices.DataContracts" minOccurs="0" name="resultsData" nillable="true" type="q3:ArrayOfResultField" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/EDM.WebServices.DataContracts" minOccurs="0" name="dataFormat" type="q4:DataFormat" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DocumentSearchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/EDM.WebServices.DataContracts" minOccurs="0" name="DocumentSearchResult" nillable="true" type="q5:FormattedData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateIndexData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/EDM.API.AccessControl.Model" minOccurs="0" name="credentials" nillable="true" type="q6:Credentials" />
+        <xs:element minOccurs="0" name="companyId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="documentId" type="xs:int" />
+        <xs:element minOccurs="0" name="documentType" nillable="true" type="xs:string" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/EDM.WebServices.DataContracts" minOccurs="0" name="data" nillable="true" type="q7:ArrayOfDataField" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateIndexDataResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DocumentRetrieve">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/EDM.API.AccessControl.Model" minOccurs="0" name="credentials" nillable="true" type="q8:Credentials" />
+        <xs:element minOccurs="0" name="companyId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="documentId" type="xs:int" />
+        <xs:element minOccurs="0" name="documentType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="conversionFlag" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DocumentRetrieveResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/EDM.WebServices.External.EDMOnline.Contracts" minOccurs="0" name="DocumentRetrieveResult" nillable="true" type="q9:DocumentResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HealthCheck">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HealthCheckResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="HealthCheckResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EDM.API.EDMOnline.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EDM.API.EDMOnline.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfListItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ListItem" nillable="true" type="tns:ListItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfListItem" nillable="true" type="tns:ArrayOfListItem" />
+  <xs:complexType name="ListItem">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ListData">
+        <xs:sequence>
+          <xs:element name="Id" type="xs:int" />
+          <xs:element name="OrderIndex" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ListItem" nillable="true" type="tns:ListItem" />
+  <xs:complexType name="ListData">
+    <xs:sequence>
+      <xs:element name="DisplayValue" nillable="true" type="xs:string" />
+      <xs:element name="QueryData" nillable="true" type="xs:string" />
+      <xs:element name="SaveData" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListData" nillable="true" type="tns:ListData" />
+  <xs:complexType name="ArrayOfAccessRight">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AccessRight" nillable="true" type="tns:AccessRight" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccessRight" nillable="true" type="tns:ArrayOfAccessRight" />
+  <xs:complexType name="AccessRight">
+    <xs:sequence>
+      <xs:element name="ObjectName" nillable="true" type="xs:string" />
+      <xs:element name="ObjectType" nillable="true" type="xs:string" />
+      <xs:element name="UserName" nillable="true" type="xs:string" />
+      <xs:element name="UserType" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccessRight" nillable="true" type="tns:AccessRight" />
+  <xs:complexType name="ArrayOfDocumentType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DocumentType" nillable="true" type="tns:DocumentType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDocumentType" nillable="true" type="tns:ArrayOfDocumentType" />
+  <xs:complexType name="DocumentType">
+    <xs:sequence>
+      <xs:element name="FileLineType" type="xs:boolean" />
+      <xs:element name="Id" type="xs:int" />
+      <xs:element name="IndexFields" nillable="true" type="tns:ArrayOfField" />
+      <xs:element name="Name" nillable="true" type="xs:string" />
+      <xs:element name="ObjectLink" nillable="true" type="xs:string" />
+      <xs:element name="Parent" nillable="true" type="xs:string" />
+      <xs:element name="TableName" nillable="true" type="xs:string" />
+      <xs:element name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentType" nillable="true" type="tns:DocumentType" />
+  <xs:complexType name="ArrayOfField">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Field" nillable="true" type="tns:Field" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfField" nillable="true" type="tns:ArrayOfField" />
+  <xs:complexType name="Field">
+    <xs:sequence>
+      <xs:element name="Column" nillable="true" type="xs:string" />
+      <xs:element name="DisplayOption" type="xs:int" />
+      <xs:element name="DisplayOrder" type="xs:int" />
+      <xs:element name="DisplaySize" type="xs:int" />
+      <xs:element name="EditField" type="xs:boolean" />
+      <xs:element name="EditViewField" type="xs:boolean" />
+      <xs:element name="FieldType" nillable="true" type="xs:string" />
+      <xs:element name="Id" type="xs:int" />
+      <xs:element name="Length" type="xs:int" />
+      <xs:element name="ListDataItems" nillable="true" type="tns:ArrayOfListData" />
+      <xs:element name="ListEntityItem" nillable="true" type="tns:ListEntity" />
+      <xs:element name="ListName" nillable="true" type="xs:string" />
+      <xs:element name="ListType" nillable="true" type="xs:string" />
+      <xs:element name="Name" nillable="true" type="xs:string" />
+      <xs:element name="QueryField" type="xs:boolean" />
+      <xs:element name="RequiredField" type="xs:boolean" />
+      <xs:element name="ResultField" type="xs:boolean" />
+      <xs:element name="StaticValue" nillable="true" type="xs:string" />
+      <xs:element name="Title" nillable="true" type="xs:string" />
+      <xs:element name="UnderlyingDataTypeName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Field" nillable="true" type="tns:Field" />
+  <xs:complexType name="ArrayOfListData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ListData" nillable="true" type="tns:ListData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfListData" nillable="true" type="tns:ArrayOfListData" />
+  <xs:complexType name="ListEntity">
+    <xs:sequence>
+      <xs:element name="Editable" type="xs:boolean" />
+      <xs:element name="GroupName" nillable="true" type="xs:string" />
+      <xs:element name="ListItems" nillable="true" type="tns:ArrayOfListItem" />
+      <xs:element name="Name" nillable="true" type="xs:string" />
+      <xs:element name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListEntity" nillable="true" type="tns:ListEntity" />
+  <xs:complexType name="ArrayOfIndexer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Indexer" nillable="true" type="tns:Indexer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIndexer" nillable="true" type="tns:ArrayOfIndexer" />
+  <xs:complexType name="Indexer">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AllowedFileTypes" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IndexFields" nillable="true" type="tns:ArrayOfField" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TableName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UploadSizeLimit" type="xs:int" />
+      <xs:element minOccurs="0" name="Uploadable" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Indexer" nillable="true" type="tns:Indexer" />
+  <xs:complexType name="Document">
+    <xs:sequence>
+      <xs:element name="DocumentPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentPath2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentPath3" nillable="true" type="xs:string" />
+      <xs:element name="DocumentType" nillable="true" type="tns:DocumentType" />
+      <xs:element name="ID" type="xs:int" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="IndexData" nillable="true" type="q2:ArrayOfKeyValueOfFieldanyTypeGYmkSHsM" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="MetaData" nillable="true" type="q3:ArrayOfKeyValueOfstringanyType" />
+      <xs:element minOccurs="0" name="UsedForKnownTypeSerializationObject" nillable="true" type="xs:anyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Document" nillable="true" type="tns:Document" />
+  <xs:complexType name="ResourceFile">
+    <xs:sequence>
+      <xs:element name="ContentType" nillable="true" type="xs:string" />
+      <xs:element name="DateAdded" type="xs:dateTime" />
+      <xs:element name="Description" nillable="true" type="xs:string" />
+      <xs:element name="FileData" nillable="true" type="xs:base64Binary" />
+      <xs:element name="Id" type="xs:int" />
+      <xs:element name="Key" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResourceFile" nillable="true" type="tns:ResourceFile" />
+  <xs:complexType name="ArrayOfSite">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Site" nillable="true" type="tns:Site" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSite" nillable="true" type="tns:ArrayOfSite" />
+  <xs:complexType name="Site">
+    <xs:sequence>
+      <xs:element name="ApplicationDirectory" nillable="true" type="xs:string" />
+      <xs:element name="BMCustId" nillable="true" type="xs:string" />
+      <xs:element name="CompanyId" nillable="true" type="xs:string" />
+      <xs:element name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element name="DatabaseName" nillable="true" type="xs:string" />
+      <xs:element name="DatabaseServer" nillable="true" type="xs:string" />
+      <xs:element name="Domain" nillable="true" type="xs:string" />
+      <xs:element name="Id" type="xs:int" />
+      <xs:element name="IsActive" type="xs:boolean" />
+      <xs:element name="Protocol" nillable="true" type="xs:string" />
+      <xs:element name="RSSQLEnabled" type="xs:boolean" />
+      <xs:element name="SecurityType" nillable="true" type="xs:string" />
+      <xs:element name="SiteAliases" nillable="true" type="xs:string" />
+      <xs:element name="Url" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Site" nillable="true" type="tns:Site" />
+</xs:schema>

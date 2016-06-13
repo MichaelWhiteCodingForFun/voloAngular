@@ -1,0 +1,12 @@
+C:\Users\michael\Source\Workspaces\volo\POD.Entities\obj\Debug\POD.Entities.csprojResolveAssemblyReference.cache
+C:\Users\michael\Source\Workspaces\volo\POD.Entities\bin\Debug\POD.Entities.dll
+C:\Users\michael\Source\Workspaces\volo\POD.Entities\bin\Debug\POD.Entities.pdb
+C:\Users\michael\Source\Workspaces\volo\POD.Entities\obj\Debug\POD.Entities.dll
+C:\Users\michael\Source\Workspaces\volo\POD.Entities\obj\Debug\POD.Entities.pdb
+C:\Users\michael\Source\Workspaces\volo\POD.Entities\bin\Debug\Dapper.dll
+C:\Users\michael\Source\Workspaces\volo\POD.Entities\bin\Debug\DapperExtensions.dll
+C:\Users\michael\Source\Workspaces\volo\POD.Entities\bin\Debug\Dapper.pdb
+C:\Users\michael\Source\Workspaces\volo\POD.Entities\bin\Debug\Dapper.xml
+C:\Users\michael\Source\Workspaces\volo\POD.Entities\bin\Debug\DapperExtensions.pdb
+C:\Users\michael\Source\Workspaces\volo\POD.Entities\bin\Debug\Newtonsoft.Json.dll
+C:\Users\michael\Source\Workspaces\volo\POD.Entities\bin\Debug\Newtonsoft.Json.xml

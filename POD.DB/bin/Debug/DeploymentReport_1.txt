@@ -1,0 +1,94 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[Role].[IsOwner] is being dropped, data loss could occur.
+       The column [dbo].[User].[StatusID] on table [dbo].[User] must be added, but the column has no default value and does not
+         allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add
+         a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a
+         deployment option.
+
+** User actions
+     Rename
+       [dbo].[Organization].[AccountName] (Column)
+       [dbo].[Organization].[AccountNumber] (Column)
+       [dbo].[Report].[UserID] (Column)
+       [dbo].[Organization].[OrganizationTypeID] (Column)
+       [dbo].[Organization].[OrganizationName] (Column)
+       [dbo].[PK_UserRole] (Primary Key)
+       [dbo].[FK_UserRole_Organization] (Foreign Key)
+       [dbo].[FK_UserRole_Role] (Foreign Key)
+       [dbo].[FK_UserRole_User] (Foreign Key)
+       [dbo].[Role].[RoleName] (Column)
+     Alter
+       [dbo].[Organization] (Table)
+       [dbo].[Report] (Table)
+       [dbo].[Role] (Table)
+       [dbo].[Ticket] (Table)
+       [dbo].[User] (Table)
+       [dbo].[GetOrganizationByID] (Procedure)
+       [dbo].[GetOrganizationByName] (Procedure)
+       [dbo].[DeleteUser] (Procedure)
+     Create
+       [dbo].[AccountStatus] (Table)
+       [dbo].[ReportType] (Table)
+       [dbo].[UserOrganization] (Table)
+       [dbo].[UserRole] (Table)
+       [dbo].[FK_UserRole_Role] (Foreign Key)
+       [dbo].[FK_UserRole_User] (Foreign Key)
+       [dbo].[FK_Report_Organization] (Foreign Key)
+       [dbo].[FK_Report_User] (Foreign Key)
+       [dbo].[FK_User_User] (Foreign Key)
+       [dbo].[EditOrganization] (Procedure)
+       [dbo].[GetOrganizations] (Procedure)
+       [dbo].[GetOrganizationsByParentID] (Procedure)
+       [dbo].[GetReports] (Procedure)
+       [dbo].[GetTickets] (Procedure)
+       [dbo].[GetUserByID] (Procedure)
+       [dbo].[GetUserByUsername] (Procedure)
+       [dbo].[GetUsers] (Procedure)
+       [dbo].[UpdateUser] (Procedure)
+
+** Supporting actions
+
+The column [dbo].[Role].[IsOwner] is being dropped, data loss could occur.
+The column [dbo].[User].[StatusID] on table [dbo].[User] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+If this deployment is executed, changes to [dbo].[Organization] might introduce run-time errors in [dbo].[dbo.GetCustomers].
+If this deployment is executed, changes to [dbo].[Organization] might introduce run-time errors in [dbo].[dbo.GetCustomers2].
+If this deployment is executed, changes to [dbo].[Organization] might introduce run-time errors in [dbo].[dbo.GetReports].
+If this deployment is executed, changes to [dbo].[Organization] might introduce run-time errors in [dbo].[dbo.GetUserByID].
+If this deployment is executed, changes to [dbo].[Organization] might introduce run-time errors in [dbo].[dbo.GetUserByID2].
+If this deployment is executed, changes to [dbo].[Organization] might introduce run-time errors in [dbo].[dbo.GetUserByID3].
+If this deployment is executed, changes to [dbo].[Organization] might introduce run-time errors in [dbo].[dbo.GetUserByUsername2].
+If this deployment is executed, changes to [dbo].[Organization] might introduce run-time errors in [dbo].[dbo.GetUserByUsername3].
+If this deployment is executed, changes to [dbo].[Organization] might introduce run-time errors in [dbo].[dbo.GetUsers].
+If this deployment is executed, changes to [dbo].[Organization] might introduce run-time errors in [dbo].[dbo.GetUsers2].
+If this deployment is executed, changes to [dbo].[Organization] might introduce run-time errors in [dbo].[dbo.Test1].
+If this deployment is executed, changes to [dbo].[Organization] might introduce run-time errors in [dbo].[EditCustomer].
+If this deployment is executed, changes to [dbo].[Report] might introduce run-time errors in [dbo].[dbo.GetReports].
+If this deployment is executed, changes to [dbo].[Role] might introduce run-time errors in [dbo].[dbo.GetUserByID].
+If this deployment is executed, changes to [dbo].[Role] might introduce run-time errors in [dbo].[dbo.GetUserByID2].
+If this deployment is executed, changes to [dbo].[Role] might introduce run-time errors in [dbo].[dbo.GetUserByID3].
+If this deployment is executed, changes to [dbo].[Role] might introduce run-time errors in [dbo].[dbo.GetUserByUsername].
+If this deployment is executed, changes to [dbo].[Role] might introduce run-time errors in [dbo].[dbo.GetUserByUsername2].
+If this deployment is executed, changes to [dbo].[Role] might introduce run-time errors in [dbo].[dbo.GetUserByUsername3].
+If this deployment is executed, changes to [dbo].[Role] might introduce run-time errors in [dbo].[dbo.GetUsers].
+If this deployment is executed, changes to [dbo].[Role] might introduce run-time errors in [dbo].[dbo.GetUsers2].
+If this deployment is executed, changes to [dbo].[Ticket] might introduce run-time errors in [dbo].[dbo.GetReports].
+If this deployment is executed, changes to [dbo].[User] might introduce run-time errors in [dbo].[dbo.GetCustomers].
+If this deployment is executed, changes to [dbo].[User] might introduce run-time errors in [dbo].[dbo.GetCustomers2].
+If this deployment is executed, changes to [dbo].[User] might introduce run-time errors in [dbo].[dbo.GetUserByID].
+If this deployment is executed, changes to [dbo].[User] might introduce run-time errors in [dbo].[dbo.GetUserByID2].
+If this deployment is executed, changes to [dbo].[User] might introduce run-time errors in [dbo].[dbo.GetUserByID3].
+If this deployment is executed, changes to [dbo].[User] might introduce run-time errors in [dbo].[dbo.GetUserByUsername].
+If this deployment is executed, changes to [dbo].[User] might introduce run-time errors in [dbo].[dbo.GetUserByUsername2].
+If this deployment is executed, changes to [dbo].[User] might introduce run-time errors in [dbo].[dbo.GetUserByUsername3].
+If this deployment is executed, changes to [dbo].[User] might introduce run-time errors in [dbo].[dbo.GetUsers].
+If this deployment is executed, changes to [dbo].[User] might introduce run-time errors in [dbo].[dbo.GetUsers2].
+If this deployment is executed, changes to [dbo].[User] might introduce run-time errors in [dbo].[dbo.Test1].
+If this deployment is executed, changes to [dbo].[User] might introduce run-time errors in [dbo].[DeleteUser2].
+

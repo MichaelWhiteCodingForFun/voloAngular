@@ -1,0 +1,20 @@
+﻿<html>
+<body style="color:grey; font-size:15px;">
+<font face="Helvetica, Arial, sans-serif">
+<div style="width:600px; height:200px; padding:30px; margin-top:30px;">
+
+*THIS IS AN AUTOMATED RESPONSE - DO NOT REPLY TO THIS EMAIL**
+<br/>
+<br/>
+{0}
+
+{1}
+
+{2}
+
+{3}
+
+</div>
+</body>
+</html>
+

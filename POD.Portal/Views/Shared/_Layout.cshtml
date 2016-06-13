@@ -1,0 +1,172 @@
+﻿@using System
+@using System.Collections.Generic
+@using System.Web
+@using POD.Portal.Models
+@{
+
+    var version = typeof(POD.Portal.MvcApplication).Assembly.GetName().Version.ToString();
+    string baseUrl = System.Configuration.ConfigurationManager.AppSettings["BaseUrl"].ToString();
+
+    List<CustomBundle> bundles = new List<CustomBundle>();
+
+    POD.Portal.Models.CustomBundle customBundle;
+
+    List<string> podBundles = new List<string>();
+    podBundles.Add("home");
+    podBundles.Add("customers");
+
+    foreach (string controller in podBundles)
+    {
+        customBundle = new POD.Portal.Models.CustomBundle();
+        customBundle.BundleName = controller;
+        customBundle.Path = BundleTable.Bundles.ResolveBundleUrl("~/bundles/" + controller);
+        customBundle.IsLoaded = false;
+        bundles.Add(customBundle);
+    }
+
+    BundleInformation bundleInformation = new BundleInformation();
+    bundleInformation.Bundles = bundles;
+    string bundleInformationJSON = Newtonsoft.Json.JsonConvert.SerializeObject(bundleInformation, Newtonsoft.Json.Formatting.None);
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <title>POD Portal</title>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+
+    @Scripts.Render("~/bundles/angular")
+    <script src="~/Assets/lib/requirejs/require.js"></script>
+
+
+    <base href="@baseUrl" />
+
+</head>
+<body ng-app="podApp" ng-controller="masterController as vm" ng-init="vm.initializeController()">
+
+    <div class="wrapper">
+        <div class="content">
+            <div class="topline">
+                <div class="centered">
+                    <div class="logo_holder">
+                        <a href="#"><img src="/Assets/images/logo.png" alt="Logo" /></a>
+                    </div>
+                    <div class="slogan">
+                        <h3>Hope Customer POD Portal</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <span class="navbar-brand"><a href="Home/Index">POD Portal</a></span>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav" ng-cloak>
+                            <li ng-show="vm.isAuth">
+                                <a href="/Search/Tickets/">Search</a>
+                            </li>
+                            <li ng-show="vm.isAuth && (vm.isOwner || vm.isCompanyAdmin)">
+                                <a href="/Customers/CustomerMaintenance/">Customer Maintenance</a>
+                            </li>
+                            <li ng-show="vm.isAuth && (vm.isOwner || vm.isCompanyAdmin || vm.isCustomerAdmin)">
+                                <a href="/User/UserMaintenance/">User Maintenance</a>
+                            </li>
+                            <li ng-show="vm.isAuth && (vm.isOwner || vm.isCompanyAdmin || vm.isCustomerAdmin)">
+                                <a href="/Report/Report/">Reports</a>
+                            </li>
+
+                            <li class="fr" ng-show="vm.isAuth">
+                                <a href="#" data-ng-click="vm.logOut()" class="logout">Log Out</a>
+                            </li>
+                            <li class="fr welcome" ng-show="vm.isAuth">
+                                <span ng-bind-template="Welcome,  {{vm.authData.user.fullName}} ({{vm.authData.user.organizationName}})" class=""></span>
+                                <span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                            </li>
+                            <li class="fr" ng-show="!vm.isAuth">
+                                <a href="/Account/Login/" class="login">Log In</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container body-content">
+
+                @RenderBody()
+
+
+            </div>
+            <footer>
+                <p class="centered">Copyright &copy; @DateTime.Now.Year  Hope Construction Materials</p>
+            </footer>
+        </div>
+
+
+        @Scripts.Render("~/bundles/shared")
+
+        <script>
+
+            (function () {
+
+                var podApplication = angular.module('podApp');
+                podApplication.provider('applicationConfiguration', function () {
+                    var _version;
+                    var _bundles;
+                    return {
+                        setVersion: function (version) {
+                            _version = version;
+                        },
+                        setBundles: function (bundles) {
+                            _bundles = bundles;
+                        },
+                        getVersion: function () {
+                            return _version;
+                        },
+                        getBundles: function () {
+                            return _bundles;
+                        },
+                        $get: function () {
+                            return {
+                                version: _version,
+                                bundles: _bundles
+                            }
+                        }
+                    }
+                });
+
+                podApplication.config(function (applicationConfigurationProvider) {
+                    applicationConfigurationProvider.setVersion('@version');
+                    applicationConfigurationProvider.setBundles('@Html.Raw(bundleInformationJSON)');
+                });
+
+            })();
+
+        </script>
+
+        @RenderSection("scripts", required: false)
+    </div>
+</body>
+</html>

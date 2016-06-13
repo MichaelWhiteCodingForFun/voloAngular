@@ -1,0 +1,133 @@
+﻿<div class="container">
+    <form name="maintianceForm" novalidate>
+        <div class="row">
+
+            <div ng-controller="UserMaintenanceController as vm" ng-init="vm.initializeController()">
+                <div ng-hide="vm.errMessage == ''" class="help-block error" ng-bind-html="vm.errMessage">
+               
+                </div>
+                <div ng-hide="vm.scsMessage == ''" class="help-block success" ng-bind-html="vm.scsMessage">
+               
+                </div>
+                <div class="contentwhite">
+                    <h4 class="page-header">{{vm.title}}</h4>
+                    <div>
+                        <div class="fl fs16">
+                            <span ng-bind="vm.totalUsers"></span> User(s)
+                        </div>
+                        <div class="fr fs16">
+                            Page <span ng-bind="vm.currentPageNumber"></span> of <span ng-bind="vm.totalPages"></span>
+                        </div>
+                    </div>
+                    <table class="table grid">
+                        <thead>
+                        <tr>
+                            <th ng-repeat="tableHeader in vm.tableHeaders" ng-class="vm.setSortIndicator(tableHeader.label)" ng-click="vm.changeSorting(tableHeader.label)">
+                                {{tableHeader.label}}
+                                <img src="../../Assets/images/icon-filter.png"/>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th><input type="text" ng-model="vm.organizationName" ng-change="vm.getUsers()" /></th>
+                            <th><input type="text" ng-model="vm.fullName" ng-change="vm.getUsers()" /></th>
+                            <th><input type="text" ng-model="vm.userName" ng-change="vm.getUsers()" /></th>
+                            <th><input type="text" ng-model="vm.roleName" ng-change="vm.getUsers()"/></th>
+                            <th><input type="text" ng-model="vm.statusName" ng-change="vm.getUsers()"/></th>
+                            <th colspan="2"><md-datepicker ng-model="vm.lastLoginDate" md-placeholder="Enter date" ng-change="vm.getUsers()"></md-datepicker></th>
+                            
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="user in vm.users | limitTo : vm.pageSize" ng-include="vm.getTemplate(user)" ng-class="vm.getTemplate(user)"></tr>
+                    </tbody>
+                </table>
+               
+                <button type="button" class="btn btn-blue fl marginright15" ng-click="vm.addUser()">Add User</button>
+                <button type="button" class="btn btn-blue fl marginright15" ng-show="vm.addedUsers.length > 0" ng-click="vm.addAllValid() && maintianceForm.$valid && vm.addAllUsers()">Add All Users</button>
+                <button type="button" class="btn btn-blue fl" ng-hide="vm.organizationID == '00000000-0000-0000-0000-000000000000'" ng-click="vm.showAll()">Show current organisation users</button>
+
+                    <uib-pagination boundary-links="true" total-items="vm.totalUsers" items-per-page="vm.pageSize" ng-change="vm.pageChanged()"
+                                    ng-model="vm.currentPageNumber" class="pagination-sm" previous-text="Prev" next-text="Next" first-text="First" last-text="Last"></uib-pagination>
+                    <div class="fr" style="margin-right: 20px;">
+                        Show
+                        <select id="rows-per-page" ng-model="vm.pageSize" ng-change="vm.pageChanged()" class="input-sm">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                        items per page
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/ng-template" id="display">
+
+                <td width="150">{{user.organization.organizationName}}</td>
+                <td width="250"><div class="email_field ellipsis" title="{{user.fullName}}">{{user.fullName}}</div></td>
+                <td width="250"><div class="email_field ellipsis" title="{{user.userName}}">{{user.userName}}</div></td>
+                <td width="150">{{user.role.roleName}}</td>
+                <td width="123">{{user.statusDisplayName}}</td>
+                <td width="123">{{user.lastLoginDate | date : "dd/MM/yyyy" }}</td>
+                <td width="70">
+                    <button type="button" class="button edit" ng-click="vm.editUser(user)" ng-show="{{user.isEditable}}"></button>
+                    <!--<button type="button" class="button delete" ng-click="vm.showDeleteDialog(user)" ng-show="{{user.isEditable}}"></button>-->
+                </td>
+
+            </script>
+            <script type="text/ng-template" id="edit">
+               
+                    <td>{{user.organization.organizationName}}</td>
+                    <td ng-show="user.id && !vm.statusColumnEdit" width="250">
+                        <div class="email_field ellipsis" title="{{user.fullName}}">{{user.fullName}}</div>
+                    </td>
+                    <td ng-show="!user.id || vm.statusColumnEdit">
+                        <ng-form name="fullNameRow">
+                            <input type="text" name="fullName" ng-model="user.fullName" placeholder="Name" required />
+                            <div class="error" ng-messages="fullNameRow.fullName.$error" ng-show="fullNameRow.fullName.$dirty || user.submitted">
+                                <div ng-message="required">{{'FullNameIsRequired' | translate}}</div>                                
+                            </div>
+                        </ng-form>  
+                    </td>
+                    <td ng-show="!user.id">
+                        <ng-form name="userNameRow">
+                            <input type="email" name="userName" ng-model="user.userName" placeholder="E-mail" required />
+                            <div class="error" ng-messages="userNameRow.userName.$error" ng-show="userNameRow.userName.$dirty || user.submitted">
+                                <div ng-message="required">{{'EmailFieldIsRequired' | translate}}</div>
+                                <div ng-message="email">{{ 'InvalidEmail' | translate }}</div>
+                            </div>
+                        </ng-form>
+                    </td>
+                    <td ng-show="user.id" width="250">
+                            <div class="email_field ellipsis" title="{{user.userName}}">{{user.userName}}</div>
+                    </td>
+                    <td ng-show="user.id && !vm.statusColumnEdit" width="150">{{user.role.roleName}}</td>
+                    <td  ng-show="!user.id || vm.statusColumnEdit">
+                        <ng-form name="userRoleRow">
+                            <select name="repeatSelect" id="repeatSelect" class="input-sm" ng-model="user.role" ng-options="option.roleName for option in vm.roleOptions track by option.roleName" required>
+                                <option value="">-- Select --</option>
+                            </select>
+                            <div class="error" ng-messages="userRoleRow.repeatSelect.$error" ng-show="userRoleRow.repeatSelect.$dirty || user.submitted">
+                                <div ng-message="required">{{'RoleNameIsRequired' | translate}}</div>
+                            </div>
+                        </ng-form>
+                    </td>
+                    <td ng-if="user.id">
+                        <ng-form name="userStatusRow">
+                            <select name="repeatStatusSelect" id="repeatStatusSelect" class="input-sm" ng-change="vm.statusChanged(user.statusID)" ng-model="user.statusID" ng-options="key as value for (key , value) in vm.statusOptions" required>
+                                <option value="">-- Select --</option>
+                            </select>
+                            <div class="error" ng-messages="userStatusRow.repeatStatusSelect.$error" ng-show="(userStatusRow.repeatStatusSelect.$dirty || user.submitted) ">
+                                <div ng-message="required">{{'StatusNameIsRequired' | translate}}</div>
+                            </div>
+                        </ng-form>
+                    </td>
+                    <td colspan="3" align="right">
+                        <button type="button" class="btn btn-sm btn-blue" ng-click="(user.submitted = true) && (userNameRow.$valid && userRoleRow.$valid) && vm.addOrUpdateUser(user)">Save</button>
+                        <button type="button" class="btn btn-sm btn-grey" ng-click="vm.reset(user)">Cancel</button>
+                    </td>
+                
+
+            </script>
+        </div>
+    </form>
+</div>

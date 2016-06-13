@@ -1,0 +1,40 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[AccountStatus] (Table)
+       [dbo].[Organization] (Table)
+       [dbo].[OrganizationType] (Table)
+       [dbo].[Report] (Table)
+       [dbo].[ReportType] (Table)
+       [dbo].[Role] (Table)
+       [dbo].[Ticket] (Table)
+       [dbo].[User] (Table)
+       [dbo].[UserOrganization] (Table)
+       [dbo].[UserRole] (Table)
+       [dbo].[FK_Ticket_Organization] (Foreign Key)
+       [dbo].[FK_User_User] (Foreign Key)
+       [dbo].[FK_UserRole_Role] (Foreign Key)
+       [dbo].[FK_UserRole_User] (Foreign Key)
+       [dbo].[DeleteUser] (Procedure)
+       [dbo].[EditOrganization] (Procedure)
+       [dbo].[GetCustomers] (Procedure)
+       [dbo].[GetOrganizationByID] (Procedure)
+       [dbo].[GetOrganizationByName] (Procedure)
+       [dbo].[GetOrganizationsByParentID] (Procedure)
+       [dbo].[GetReports] (Procedure)
+       [dbo].[GetTickets] (Procedure)
+       [dbo].[GetUserByID] (Procedure)
+       [dbo].[GetUserByUsername] (Procedure)
+       [dbo].[GetUsers] (Procedure)
+       [dbo].[UpdateUser] (Procedure)
+
+** Supporting actions

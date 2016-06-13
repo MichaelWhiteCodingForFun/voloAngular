@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7522f747-b4b0-4d13-94e7-0a684d73bda9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://eolt01.edmonline.com/Services/edmonlineservice.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="EDMOnlineService.xsd" MetadataType="Schema" ID="1d42eae2-b207-4f7d-9ae1-de25ca80ee34" SourceId="1" SourceUrl="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd1" />
+    <MetadataFile FileName="EDMOnlineService1.xsd" MetadataType="Schema" ID="6d7a3761-81a5-4e48-b420-2a47d4260613" SourceId="1" SourceUrl="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd6" />
+    <MetadataFile FileName="EDMOnlineService2.xsd" MetadataType="Schema" ID="f67626fa-d16c-4ac1-8456-de82aac2b208" SourceId="1" SourceUrl="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd2" />
+    <MetadataFile FileName="EDMOnlineService.wsdl" MetadataType="Wsdl" ID="38c9d366-c1b9-45f6-b675-94927ae3dd13" SourceId="1" SourceUrl="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?wsdl" />
+    <MetadataFile FileName="EDMOnlineService3.xsd" MetadataType="Schema" ID="437d1c45-0a61-4ca3-be51-ad4e3cb40649" SourceId="1" SourceUrl="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd5" />
+    <MetadataFile FileName="EDMOnlineService4.xsd" MetadataType="Schema" ID="914b9ce5-c163-4b75-ac40-16826f85c63b" SourceId="1" SourceUrl="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd3" />
+    <MetadataFile FileName="EDMOnlineService5.xsd" MetadataType="Schema" ID="f2928865-70f4-4dd9-bb63-dc458c6cc58a" SourceId="1" SourceUrl="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd9" />
+    <MetadataFile FileName="EDMOnlineService.disco" MetadataType="Disco" ID="c7be26f6-68f8-4734-9f0f-3eab0b447057" SourceId="1" SourceUrl="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?disco" />
+    <MetadataFile FileName="EDMOnlineService6.xsd" MetadataType="Schema" ID="45f88990-39da-4e37-a950-5b7f0d225e70" SourceId="1" SourceUrl="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd0" />
+    <MetadataFile FileName="EDMOnlineService7.xsd" MetadataType="Schema" ID="79c5eb6c-37e9-49fb-827e-faef94192a87" SourceId="1" SourceUrl="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd7" />
+    <MetadataFile FileName="EDMOnlineService1.wsdl" MetadataType="Wsdl" ID="6e358d90-1ba4-48c6-802d-60688208978a" SourceId="1" SourceUrl="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="EDMOnlineService8.xsd" MetadataType="Schema" ID="06fae276-2e0f-4aaa-b873-d00629ce08c2" SourceId="1" SourceUrl="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd8" />
+    <MetadataFile FileName="EDMOnlineService9.xsd" MetadataType="Schema" ID="3102b8af-aad1-40a9-a1b9-00a278f630bb" SourceId="1" SourceUrl="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

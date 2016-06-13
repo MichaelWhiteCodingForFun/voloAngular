@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/EDM.API.EDMOnline.Model.RecordsManagement.RSSQL" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EDM.API.EDMOnline.Model.RecordsManagement.RSSQL" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/EDM.API.EDMOnline.Model" />
+  <xs:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="Account">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Children" nillable="true" type="tns:ArrayOfAccount" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contacts" nillable="true" type="tns:ArrayOfContact" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Level" type="tns:AccountLevel" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Parent" nillable="true" type="tns:Account" />
+      <xs:element minOccurs="0" name="RetentionDetails" nillable="true" type="tns:ArrayOfRetentionDetail" />
+      <xs:element minOccurs="0" name="UseParentRetention" type="xs:boolean" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="Account" nillable="true" type="tns:Account" />
+  <xs:complexType name="ArrayOfAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Account" nillable="true" type="tns:Account" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccount" nillable="true" type="tns:ArrayOfAccount" />
+  <xs:complexType name="ArrayOfContact">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Contact" nillable="true" type="tns:Contact" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContact" nillable="true" type="tns:ArrayOfContact" />
+  <xs:complexType name="Contact">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddressLine1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressLine2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AddressLine3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fax" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Contact" nillable="true" type="tns:Contact" />
+  <xs:simpleType name="AccountLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Level1">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Level2">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Level3">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AccountLevel" nillable="true" type="tns:AccountLevel" />
+  <xs:complexType name="ArrayOfRetentionDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RetentionDetail" nillable="true" type="tns:RetentionDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRetentionDetail" nillable="true" type="tns:ArrayOfRetentionDetail" />
+  <xs:complexType name="RetentionDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RecordSeriesCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RecordSeriesID" type="xs:int" />
+      <xs:element minOccurs="0" name="RecordSeriesTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RetentionInfoID" type="xs:int" />
+      <xs:element minOccurs="0" name="RetentionInformationDescription" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RetentionDetail" nillable="true" type="tns:RetentionDetail" />
+  <xs:simpleType name="ObjectType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="Container">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FileFolder">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Tape">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ObjectType" nillable="true" type="tns:ObjectType" />
+  <xs:complexType name="CaptureTemplate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fields" nillable="true" type="tns:ArrayOfCaptureField" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CaptureTemplate" nillable="true" type="tns:CaptureTemplate" />
+  <xs:complexType name="ArrayOfCaptureField">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CaptureField" nillable="true" type="tns:CaptureField" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCaptureField" nillable="true" type="tns:ArrayOfCaptureField" />
+  <xs:complexType name="CaptureField">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DisplayOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="HelpText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/EDM.API.EDMOnline.Model" minOccurs="0" name="ListItems" nillable="true" type="q1:ArrayOfListItem" />
+      <xs:element minOccurs="0" name="ListName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ListSource" type="tns:CaptureField.ListSources" />
+      <xs:element minOccurs="0" name="Mandatory" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RSSQLField" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegEx" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TempateId" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" type="tns:FieldType" />
+      <xs:element minOccurs="0" name="ValidationMessage" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CaptureField" nillable="true" type="tns:CaptureField" />
+  <xs:simpleType name="CaptureField.ListSources">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EDMOnline" />
+      <xs:enumeration value="RSSQL" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="CaptureField.ListSources" nillable="true" type="tns:CaptureField.ListSources" />
+  <xs:simpleType name="FieldType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Text" />
+      <xs:enumeration value="Date" />
+      <xs:enumeration value="Integer" />
+      <xs:enumeration value="List" />
+      <xs:enumeration value="CheckBox" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="FieldType" nillable="true" type="tns:FieldType" />
+  <xs:simpleType name="TemplateUse">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Capture">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Query">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Results">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Details">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Edit">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TemplateUse" nillable="true" type="tns:TemplateUse" />
+  <xs:complexType name="RSSQLPriorityActionCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActionCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActionId" type="xs:int" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RSSQLPriorityActionCode" nillable="true" type="tns:RSSQLPriorityActionCode" />
+  <xs:complexType name="ArrayOfRSSQLPriorityActionCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RSSQLPriorityActionCode" nillable="true" type="tns:RSSQLPriorityActionCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRSSQLPriorityActionCode" nillable="true" type="tns:ArrayOfRSSQLPriorityActionCode" />
+  <xs:complexType name="SiteAccounts">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Accounts" nillable="true" type="tns:ArrayOfAccount" />
+    </xs:sequence>
+    <xs:attribute ref="ser:Id" />
+    <xs:attribute ref="ser:Ref" />
+  </xs:complexType>
+  <xs:element name="SiteAccounts" nillable="true" type="tns:SiteAccounts" />
+  <xs:complexType name="ArrayOfCaptureTemplate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CaptureTemplate" nillable="true" type="tns:CaptureTemplate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCaptureTemplate" nillable="true" type="tns:ArrayOfCaptureTemplate" />
+  <xs:complexType name="Container">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountId" type="xs:int" />
+      <xs:element minOccurs="0" name="AddDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AlternateCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Barcode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contents" nillable="true" type="tns:ArrayOfFileFolder" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ContentsList" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DestroyDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsRequestable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ItemId" type="xs:int" />
+      <xs:element minOccurs="0" name="PermanentFlag" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RSSQLStatus" type="tns:RSSQLItemStatus" />
+      <xs:element minOccurs="0" name="RecordSeriesCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RetentionDetail" nillable="true" type="tns:RetentionDetail" />
+      <xs:element minOccurs="0" name="SequenceFrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SequenceTo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShortDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UDD" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UDF1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDF2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDF3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDF4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdateDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Container" nillable="true" type="tns:Container" />
+  <xs:complexType name="ArrayOfFileFolder">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FileFolder" nillable="true" type="tns:FileFolder" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFileFolder" nillable="true" type="tns:ArrayOfFileFolder" />
+  <xs:complexType name="FileFolder">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountId" type="xs:int" />
+      <xs:element minOccurs="0" name="AddDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="AlternateCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Barcode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContainerId" type="xs:int" />
+      <xs:element minOccurs="0" name="ContainerStatus" type="tns:RSSQLItemStatus" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ContentsList" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DestroyDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ImagePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsRequestable" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ItemId" type="xs:int" />
+      <xs:element minOccurs="0" name="PermanentFlag" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RSSQLStatus" type="tns:RSSQLItemStatus" />
+      <xs:element minOccurs="0" name="RecordSeriesCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RequestStatus" type="tns:ScanOnDemandRequestStatus" />
+      <xs:element minOccurs="0" name="RetentionDetail" nillable="true" type="tns:RetentionDetail" />
+      <xs:element minOccurs="0" name="SequenceFrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SequenceTo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShortDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UDD" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UDF1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDF2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDF3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UDF4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdateDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UpdatedBy" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FileFolder" nillable="true" type="tns:FileFolder" />
+  <xs:simpleType name="RSSQLItemStatus">
+    <xs:annotation>
+      <xs:appinfo>
+        <ActualType Name="unsignedByte" Namespace="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None" />
+      <xs:enumeration value="NoAssociatedContainer" />
+      <xs:enumeration value="Destroyed">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="In">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">32</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Out">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">48</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PermOut">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">64</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Pending">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">80</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Unknown">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">96</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RSSQLItemStatus" nillable="true" type="tns:RSSQLItemStatus" />
+  <xs:simpleType name="ScanOnDemandRequestStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotRequested" />
+      <xs:enumeration value="Processing" />
+      <xs:enumeration value="NotFound" />
+      <xs:enumeration value="Completed" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ScanOnDemandRequestStatus" nillable="true" type="tns:ScanOnDemandRequestStatus" />
+  <xs:complexType name="ArrayOfContainer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Container" nillable="true" type="tns:Container" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContainer" nillable="true" type="tns:ArrayOfContainer" />
+  <xs:simpleType name="RSSQLSortOrder">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Ascending" />
+      <xs:enumeration value="Descending" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RSSQLSortOrder" nillable="true" type="tns:RSSQLSortOrder" />
+  <xs:complexType name="ContainerSearchResults">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorInformation" nillable="true" type="tns:RSSQLItemSaveInfo" />
+      <xs:element minOccurs="0" name="RecordsAvailable" type="xs:int" />
+      <xs:element minOccurs="0" name="Results" nillable="true" type="tns:ArrayOfContainer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContainerSearchResults" nillable="true" type="tns:ContainerSearchResults" />
+  <xs:complexType name="RSSQLItemSaveInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ItemId" type="xs:int" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Messages" nillable="true" type="q4:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Result" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RSSQLItemSaveInfo" nillable="true" type="tns:RSSQLItemSaveInfo" />
+  <xs:complexType name="FileFolderSearchResults">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorInformation" nillable="true" type="tns:RSSQLItemSaveInfo" />
+      <xs:element minOccurs="0" name="RecordsAvailable" type="xs:int" />
+      <xs:element minOccurs="0" name="Results" nillable="true" type="tns:ArrayOfFileFolder" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FileFolderSearchResults" nillable="true" type="tns:FileFolderSearchResults" />
+  <xs:complexType name="ArrayOfConsumable">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Consumable" nillable="true" type="tns:Consumable" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConsumable" nillable="true" type="tns:ArrayOfConsumable" />
+  <xs:complexType name="Consumable">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemType" type="tns:ConsumableType" />
+      <xs:element minOccurs="0" name="MaxOrderQuantity" type="xs:int" />
+      <xs:element minOccurs="0" name="MinOrderQuantity" type="xs:int" />
+      <xs:element minOccurs="0" name="ObjectId" type="xs:int" />
+      <xs:element minOccurs="0" name="OrderQuantity" type="xs:int" />
+      <xs:element minOccurs="0" name="QuantityMultiplier" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Consumable" nillable="true" type="tns:Consumable" />
+  <xs:simpleType name="ConsumableType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="BoxLabel">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FileLabel">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Box">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ConsumableType" nillable="true" type="tns:ConsumableType" />
+  <xs:complexType name="RSSQLRequestType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DeliveryType" type="tns:DeliveryType" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ObjectName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PriorityActionCodeID" type="xs:int" />
+      <xs:element minOccurs="0" name="RSSQLObjectType" type="tns:ObjectType" />
+      <xs:element minOccurs="0" name="SLAHours" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RSSQLRequestType" nillable="true" type="tns:RSSQLRequestType" />
+  <xs:simpleType name="DeliveryType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ScanOnDemand" />
+      <xs:enumeration value="Return" />
+      <xs:enumeration value="ClientCollect" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DeliveryType" nillable="true" type="tns:DeliveryType" />
+  <xs:complexType name="ArrayOfRSSQLRequestType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RSSQLRequestType" nillable="true" type="tns:RSSQLRequestType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRSSQLRequestType" nillable="true" type="tns:ArrayOfRSSQLRequestType" />
+  <xs:complexType name="ArrayOfRSSQLRequestResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RSSQLRequestResult" nillable="true" type="tns:RSSQLRequestResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRSSQLRequestResult" nillable="true" type="tns:ArrayOfRSSQLRequestResult" />
+  <xs:complexType name="RSSQLRequestResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Barcode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ItemId" type="xs:int" />
+      <xs:element minOccurs="0" name="OrderId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RSSQLRequestResult" nillable="true" type="tns:RSSQLRequestResult" />
+  <xs:complexType name="ArrayOfRSSQLGlobalSearchSummary">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RSSQLGlobalSearchSummary" nillable="true" type="tns:RSSQLGlobalSearchSummary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRSSQLGlobalSearchSummary" nillable="true" type="tns:ArrayOfRSSQLGlobalSearchSummary" />
+  <xs:complexType name="RSSQLGlobalSearchSummary">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountID" type="xs:int" />
+      <xs:element minOccurs="0" name="AccountName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HitCount" type="xs:int" />
+      <xs:element minOccurs="0" name="ObjectType" type="tns:ObjectType" />
+      <xs:element minOccurs="0" name="RetentionDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RetentionID" type="xs:int" />
+      <xs:element minOccurs="0" name="TemplateID" type="xs:int" />
+      <xs:element minOccurs="0" name="TemplateUse" type="tns:TemplateUse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RSSQLGlobalSearchSummary" nillable="true" type="tns:RSSQLGlobalSearchSummary" />
+  <xs:complexType name="RSSQLTemplateUseMapSearchResults">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RecordsAvailable" type="xs:int" />
+      <xs:element minOccurs="0" name="Results" nillable="true" type="tns:ArrayOfRSSQLTemplateUseMap" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RSSQLTemplateUseMapSearchResults" nillable="true" type="tns:RSSQLTemplateUseMapSearchResults" />
+  <xs:complexType name="ArrayOfRSSQLTemplateUseMap">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RSSQLTemplateUseMap" nillable="true" type="tns:RSSQLTemplateUseMap" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRSSQLTemplateUseMap" nillable="true" type="tns:ArrayOfRSSQLTemplateUseMap" />
+  <xs:complexType name="RSSQLTemplateUseMap">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Account" nillable="true" type="tns:Account" />
+      <xs:element minOccurs="0" name="ObjectType" type="tns:ObjectType" />
+      <xs:element minOccurs="0" name="RetentionDetail" nillable="true" type="tns:RetentionDetail" />
+      <xs:element minOccurs="0" name="Template" nillable="true" type="tns:CaptureTemplate" />
+      <xs:element minOccurs="0" name="TemplateUse" type="tns:TemplateUse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RSSQLTemplateUseMap" nillable="true" type="tns:RSSQLTemplateUseMap" />
+</xs:schema>

@@ -1,0 +1,9 @@
+C:\Users\michael\Source\Workspaces\volo\POD.Services\bin\Debug\POD.Interfaces.dll
+C:\Users\michael\Source\Workspaces\volo\POD.Services\bin\Debug\POD.Interfaces.pdb
+C:\Users\michael\Source\Workspaces\volo\POD.Services\bin\Debug\POD.Entities.dll
+C:\Users\michael\Source\Workspaces\volo\POD.Services\bin\Debug\POD.Entities.pdb
+C:\Users\michael\Source\Workspaces\volo\POD.Services\obj\Debug\POD.Interfaces.csprojResolveAssemblyReference.cache
+C:\Users\michael\Source\Workspaces\volo\POD.Services\obj\Debug\POD.Interfaces.dll
+C:\Users\michael\Source\Workspaces\volo\POD.Services\obj\Debug\POD.Interfaces.pdb
+C:\Users\michael\Source\Workspaces\volo\POD.Services\bin\Debug\DapperExtensions.dll
+C:\Users\michael\Source\Workspaces\volo\POD.Services\bin\Debug\DapperExtensions.pdb

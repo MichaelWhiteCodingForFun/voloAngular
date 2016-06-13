@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/EDM.WebServices.DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/EDM.WebServices.DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfDataField">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DataField" nillable="true" type="tns:DataField" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDataField" nillable="true" type="tns:ArrayOfDataField" />
+  <xs:complexType name="DataField">
+    <xs:sequence>
+      <xs:element name="FieldName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FieldValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataField" nillable="true" type="tns:DataField" />
+  <xs:complexType name="ArrayOfResultField">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ResultField" nillable="true" type="tns:ResultField" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfResultField" nillable="true" type="tns:ArrayOfResultField" />
+  <xs:complexType name="ResultField">
+    <xs:sequence>
+      <xs:element name="FieldName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FieldAlias" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultField" nillable="true" type="tns:ResultField" />
+  <xs:simpleType name="DataFormat">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="XmlElements">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="XmlAttributes">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="JSON">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CSV">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="DataFormat" nillable="true" type="tns:DataFormat" />
+  <xs:complexType name="FormattedData">
+    <xs:sequence>
+      <xs:element name="AllTables" nillable="true" type="tns:ArrayOfTableInfo" />
+      <xs:element name="Data" nillable="true" type="xs:string" />
+      <xs:element name="Format" type="tns:DataFormat" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FormattedData" nillable="true" type="tns:FormattedData" />
+  <xs:complexType name="ArrayOfTableInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TableInfo" nillable="true" type="tns:TableInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTableInfo" nillable="true" type="tns:ArrayOfTableInfo" />
+  <xs:complexType name="TableInfo">
+    <xs:sequence>
+      <xs:element name="ColumnInfo" nillable="true" type="tns:ArrayOfColumnInfo" />
+      <xs:element name="TableName" nillable="true" type="xs:string" />
+      <xs:element name="OriginalTableName" nillable="true" type="xs:string" />
+      <xs:element name="RowCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TableInfo" nillable="true" type="tns:TableInfo" />
+  <xs:complexType name="ArrayOfColumnInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ColumnInfo" nillable="true" type="tns:ColumnInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfColumnInfo" nillable="true" type="tns:ArrayOfColumnInfo" />
+  <xs:complexType name="ColumnInfo">
+    <xs:sequence>
+      <xs:element name="ColumnName" nillable="true" type="xs:string" />
+      <xs:element name="OriginalColumnName" nillable="true" type="xs:string" />
+      <xs:element name="DataType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ColumnInfo" nillable="true" type="tns:ColumnInfo" />
+</xs:schema>

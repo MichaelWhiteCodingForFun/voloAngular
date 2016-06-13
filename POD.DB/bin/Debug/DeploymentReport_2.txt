@@ -1,0 +1,36 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Alter
+       [dbo].[Organization] (Table)
+       [dbo].[Report] (Table)
+       [dbo].[Ticket] (Table)
+       [dbo].[GetTickets] (Procedure)
+       [dbo].[GetUsers] (Procedure)
+       [dbo].[UpdateUser] (Procedure)
+     Create
+       [dbo].[FK_Report_Organization] (Foreign Key)
+       [dbo].[FK_Report_User] (Foreign Key)
+       [dbo].[GetOrganizations] (Procedure)
+
+** Supporting actions
+     Refresh
+       [dbo].[EditOrganization] (Procedure)
+       [dbo].[GetOrganizationByID] (Procedure)
+       [dbo].[GetOrganizationByName] (Procedure)
+       [dbo].[GetOrganizationsByParentID] (Procedure)
+       [dbo].[GetReports] (Procedure)
+       [dbo].[GetUserByID] (Procedure)
+       [dbo].[GetUserByUsername] (Procedure)
+
+If this deployment is executed, changes to [dbo].[Organization] might introduce run-time errors in [dbo].[EditCustomer].
+If this deployment is executed, changes to [dbo].[Organization] might introduce run-time errors in [dbo].[GetCustomers].
+

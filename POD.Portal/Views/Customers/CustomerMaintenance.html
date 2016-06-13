@@ -1,0 +1,115 @@
+﻿<div class="container">
+    <div class="row">
+
+        <div ng-controller="CustomerMaintenanceController as vm" ng-init="vm.initializeController()">
+            <div ng-hide="vm.errMessage == ''" class="help-block error">
+                {{vm.errMessage}}
+            </div>
+            <div ng-hide="vm.scsMessage == ''" class="help-block success">
+                {{vm.scsMessage}}
+            </div>
+            <div class="contentwhite">
+                <h4 class="page-header">{{vm.title}}</h4>
+                <div>
+                    <div class="fl fs16">
+                        <span ng-bind="vm.totalCustomers"></span> Organisation(s)
+                    </div>
+                    <div class="fr fs16">
+                        Page <span ng-bind="vm.currentPageNumber"></span> of <span ng-bind="vm.totalPages"></span>
+                    </div>
+                </div>
+                <table class="table grid">
+                    <thead>
+                        <tr>
+                            <th ng-repeat="tableHeader in vm.tableHeaders" ng-class="vm.setSortIndicator(tableHeader.label)" ng-click="vm.changeSorting(tableHeader.label)">
+                                {{tableHeader.label}}
+                                <img src="../../Assets/images/icon-filter.png"/>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th><input type="text" ng-model="vm.accountNumber" ng-change="vm.getCustomers()" /></th>
+                            <th><input type="text" ng-model="vm.accountName" ng-change="vm.getCustomers()" /></th>
+                            <th><input type="text" ng-model="vm.adminUser" ng-change="vm.getCustomers()" /></th>
+                            <th><input type="text" ng-model="vm.userName" ng-change="vm.getCustomers()" /></th>
+                            <th><input type="text" ng-model="vm.statusName" ng-change="vm.getCustomers()" /></th>
+                            <th><md-datepicker ng-model="vm.lastLoginDate" md-placeholder="Enter date" ng-change="vm.getCustomers()"></md-datepicker></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="customer in vm.customers | limitTo : vm.pageSize" ng-include="vm.getTemplate(customer)" ng-class="vm.getTemplate(customer)"></tr>
+                    </tbody>
+                </table>
+
+                <!-- TODO -->
+                <button type="button" class="btn btn-blue fl" ng-click="vm.addCustomer()">Add Customer</button>
+
+                <uib-pagination boundary-links="true" total-items="vm.totalCustomers" items-per-page="vm.pageSize" ng-change="vm.pageChanged()"
+                                ng-model="vm.currentPageNumber" class="pagination-sm" previous-text="Prev" next-text="Next" first-text="First" last-text="Last"></uib-pagination>
+                <div class="fr" style="margin-right: 20px;">
+                    Show
+                    <select id="rows-per-page" ng-model="vm.pageSize" ng-change="vm.pageChanged()" class="input-sm">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                    items per page
+                </div>
+            </div>
+        </div>
+
+        <script type="text/ng-template" id="display">
+            <td width="150">{{customer.accountNumber}}</td>
+            <td width="190">{{customer.organizationName}}</td>
+            <td width="190"><div class="admin_user_field ellipsis" title="{{customer.adminUser.fullName}}">{{customer.adminUser.fullName}}</div></td>
+            <td width="250"><div class="email_field ellipsis" title="{{customer.adminUser.userName}}">{{customer.adminUser.userName}}</div></td>
+            <td width="110">{{customer.adminUser.statusDisplayName}}</td>
+            <td width="123">{{customer.adminUser.lastLoginDate | date : "dd/MM/yyyy" }}</td>
+            <td width="70">
+                <button type="button" class="button manage" title="Manage users" ng-click="vm.manageCustomer(customer)"></button>
+                <!--<button type="button" class="button edit" ng-click="vm.editCustomer(customer)"></button>-->
+                <!--<button type="button" class="button delete" ng-click="vm.deleteCustomer(customer)"></button>-->
+            </td>
+        </script>
+
+        <script type="text/ng-template" id="edit">
+            <td>
+                <ng-form name="cusNumRow">
+                    <input type="text" name="customerNumber" ng-model=customer.accountNumber required />
+                    <div class="error" ng-messages="cusNumRow.customerNumber.$error" ng-show="cusNumRow.customerNumber.$dirty || customer.submitted">
+                        <div ng-message="required">{{'CustomerNumberIsRequired' | translate}}</div>
+                    </div>
+                </ng-form>
+            </td>
+            <td>
+                <ng-form name="cusNameRow">
+                    <input type="text" name="customerName" ng-model=customer.organizationName required />
+                    <div class="error" ng-messages="cusNameRow.customerName.$error" ng-show="cusNameRow.customerName.$dirty || customer.submitted">
+                        <div ng-message="required">{{'CustomerNameIsRequired' | translate}}</div>
+                    </div>
+                </ng-form>
+            </td>
+            <td>
+                <ng-form name="fullNameRow">
+                    <input type="text" name="fullName" ng-model=customer.adminUser.fullName required />
+                    <div class="error" ng-messages="fullNameRow.fullName.$error" ng-show="fullNameRow.fullName.$dirty || customer.submitted">
+                        <div ng-message="required">{{'FullNameIsRequired' | translate}}</div>
+                    </div>
+                </ng-form>
+            </td>
+            <td>
+                <ng-form name="userNameRow">
+                    <input type="email" name="userName" ng-model=customer.adminUser.userName required />
+                    <div class="error" ng-messages="userNameRow.userName.$error" ng-show="userNameRow.userName.$dirty || customer.submitted">
+                        <div ng-message="required">{{'EmailFieldIsRequired' | translate}}</div>
+                        <div ng-message="email">{{'InvalidEmail' | translate }}</div>
+                    </div>
+                </ng-form>
+            </td>
+            <td colspan="3" align="right">
+                <button type="button" class="btn btn-sm btn-blue" ng-click="(customer.submitted = true) && (cusNumRow.$valid && cusNameRow.$valid && fullNameRow.$valid && userNameRow.$valid) && vm.addOrUpdateCustomer(customer)">Save</button>
+                <button type="button" class="btn btn-sm btn-grey" ng-click="vm.reset(customer)">Cancel</button>
+            </td>
+        </script>
+    </div>
+</div>

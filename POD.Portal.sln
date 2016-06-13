@@ -1,0 +1,84 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POD.Portal", "POD.Portal\POD.Portal.csproj", "{34662FC1-B342-48B5-8179-69CD8A6DF673}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POD.Data", "POD.Data\POD.Data.csproj", "{7992030A-BFD2-4065-950C-75421B6A507B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POD.Interfaces", "POD.Services\POD.Interfaces.csproj", "{E26F1D58-681B-4504-9AFB-FD35BCD6685A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POD.Entities", "POD.Entities\POD.Entities.csproj", "{948818F5-724F-4147-A65B-BCF4AE5A2C93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataTier", "DataTier", "{57573F67-4F36-4EB8-9ACC-A4342AC24005}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "POD.DB", "POD.DB\POD.DB.sqlproj", "{ED9B34C5-8DC2-45B9-8ADE-EF920AC4991C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POD.Utilities", "POD.Utilities\POD.Utilities.csproj", "{42E99E67-FC34-4A17-8F97-EDA3BC6B29BD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34662FC1-B342-48B5-8179-69CD8A6DF673}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34662FC1-B342-48B5-8179-69CD8A6DF673}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34662FC1-B342-48B5-8179-69CD8A6DF673}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34662FC1-B342-48B5-8179-69CD8A6DF673}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7992030A-BFD2-4065-950C-75421B6A507B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7992030A-BFD2-4065-950C-75421B6A507B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7992030A-BFD2-4065-950C-75421B6A507B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7992030A-BFD2-4065-950C-75421B6A507B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E26F1D58-681B-4504-9AFB-FD35BCD6685A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E26F1D58-681B-4504-9AFB-FD35BCD6685A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E26F1D58-681B-4504-9AFB-FD35BCD6685A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E26F1D58-681B-4504-9AFB-FD35BCD6685A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{948818F5-724F-4147-A65B-BCF4AE5A2C93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{948818F5-724F-4147-A65B-BCF4AE5A2C93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{948818F5-724F-4147-A65B-BCF4AE5A2C93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{948818F5-724F-4147-A65B-BCF4AE5A2C93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED9B34C5-8DC2-45B9-8ADE-EF920AC4991C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED9B34C5-8DC2-45B9-8ADE-EF920AC4991C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED9B34C5-8DC2-45B9-8ADE-EF920AC4991C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{ED9B34C5-8DC2-45B9-8ADE-EF920AC4991C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED9B34C5-8DC2-45B9-8ADE-EF920AC4991C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED9B34C5-8DC2-45B9-8ADE-EF920AC4991C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{42E99E67-FC34-4A17-8F97-EDA3BC6B29BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42E99E67-FC34-4A17-8F97-EDA3BC6B29BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42E99E67-FC34-4A17-8F97-EDA3BC6B29BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42E99E67-FC34-4A17-8F97-EDA3BC6B29BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ED9B34C5-8DC2-45B9-8ADE-EF920AC4991C} = {57573F67-4F36-4EB8-9ACC-A4342AC24005}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs2015:8080/tfs/podportal
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = POD.Data\\POD.Data.csproj
+		SccProjectName1 = POD.Data
+		SccLocalPath1 = POD.Data
+		SccProjectUniqueName2 = POD.Entities\\POD.Entities.csproj
+		SccProjectName2 = POD.Entities
+		SccLocalPath2 = POD.Entities
+		SccProjectUniqueName3 = POD.Portal\\POD.Portal.csproj
+		SccProjectName3 = POD.Portal
+		SccLocalPath3 = POD.Portal
+		SccProjectUniqueName4 = POD.Services\\POD.Interfaces.csproj
+		SccProjectName4 = POD.Services
+		SccLocalPath4 = POD.Services
+		SccProjectUniqueName5 = POD.DB\\POD.DB.sqlproj
+		SccProjectTopLevelParentUniqueName5 = POD.Portal.sln
+		SccProjectName5 = POD.DB
+		SccLocalPath5 = POD.DB
+		SccProjectUniqueName6 = POD.Utilities\\POD.Utilities.csproj
+		SccProjectName6 = POD.Utilities
+		SccLocalPath6 = POD.Utilities
+	EndGlobalSection
+EndGlobal

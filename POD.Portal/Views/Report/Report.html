@@ -1,0 +1,66 @@
+﻿<div class="container">
+    <form name="maintianceForm" novalidate>
+        <div class="row">
+
+            <div ng-controller="ReportController as vm" ng-init="vm.initializeController()">
+                <div ng-hide="vm.errMessage == ''" class="help-block error">
+                    {{vm.errMessage}}
+                </div>
+                <div ng-hide="vm.scsMessage == ''" class="help-block success">
+                    {{vm.scsMessage}}
+                </div>
+                <div class="contentwhite">
+                    <h4 class="page-header">{{vm.title}}</h4>
+                    <div>
+                        <div class="fl fs16">
+                            <span ng-bind="vm.totalReports"></span> Report(s)
+                        </div>
+                        <div class="fr fs16">
+                            Page <span ng-bind="vm.currentPageNumber"></span> of <span ng-bind="vm.totalPages"></span>
+                        </div>
+                    </div>
+                    <table class="table grid">
+                        <thead>
+                            <tr>
+                                <th ng-repeat="tableHeader in vm.tableHeaders" ng-class="vm.setSortIndicator(tableHeader.label)" ng-click="vm.changeSorting(tableHeader.label)">
+                                    {{tableHeader.label}}
+                                    <img src="../../Assets/images/icon-filter.png" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="report in vm.reports | limitTo : vm.pageSize" ng-include="vm.getTemplate(report)" ng-class="vm.getTemplate(report)"></tr>
+                        </tbody>
+                    </table>
+                    <uib-pagination boundary-links="true" total-items="vm.totalReports" items-per-page="vm.pageSize" ng-change="vm.pageChanged()"
+                                    ng-model="vm.currentPageNumber" class="pagination-sm" previous-text="Prev" next-text="Next" first-text="First" last-text="Last"></uib-pagination>
+                    <div class="fr" style="margin-right: 20px;">
+                        Show
+                        <select id="rows-per-page" ng-model="vm.pageSize" ng-change="vm.pageChanged()" class="input-sm">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                        items per page
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/ng-template" id="display">
+
+                <td width="150">{{report.createdByID}}</td>
+                <td width="250">{{report.createdDateUtc}}</td>
+                <td width="250">{{report.details}}</td>
+                <td width="150">{{report.id}}</td>
+                <td width="123">{{report.isSuccess}}</td>
+                <td width="150">{{report.reportTypeID}}</td>
+                <td width="123">{{report.ticketID}}</td>
+                <td width="70">
+                    <button type="button" class="button delete" ng-click="vm.deleteUser(user)"></button>
+                </td>
+
+            </script>
+            
+        </div>
+    </form>
+</div>

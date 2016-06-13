@@ -1,0 +1,73 @@
+﻿<div class="container">
+    <div class="row">
+
+        <div ng-controller="TicketsController as vm" ng-init="vm.initializeController()">
+            <div ng-hide="vm.errMessage == ''" class="help-block error">
+                {{vm.errMessage}}
+            </div>
+            <div ng-hide="vm.scsMessage == ''" class="help-block success">
+                {{vm.scsMessage}}
+            </div>
+            <div class="contentwhite">
+                <h4 class="page-header">{{vm.title}}</h4>
+                <select name="organizations" id="organization" class="input-sm" ng-model="user.statusID" ng-change="vm.getTicketOrganizationData(user.statusID)" ng-options="option.organizationName for option in vm.statusOptions track by option.id" required>
+                    <option value="">-Select-</option>
+                </select>
+                <div ng-if="vm.showDiv">
+                    <div>
+                        <div class="fl fs16">
+                            <span ng-bind="vm.totalTickets"></span> Ticket(s)
+                        </div>
+                        <div class="fr fs16">
+                            Page <span ng-bind="vm.currentPageNumber"></span> of <span ng-bind="vm.totalPages"></span>
+                        </div>
+                    </div>
+                    <table class="table grid">
+                        <thead>
+                            <tr>
+                                <th ng-repeat="tableHeader in vm.tableHeaders" ng-class="vm.setSortIndicator(tableHeader.label)" ng-click="vm.changeSorting(tableHeader.label)">
+                                    {{tableHeader.label}}
+                                    <img src="../../Assets/images/icon-filter.png" />
+                                </th>
+                            </tr>
+                            <tr>
+                                <th width="150"><input type="text" ng-model="vm.accountNumber" ng-change="vm.getTickets()" /></th>
+                                <th width="190"><input type="text" ng-model="vm.accountName"  ng-change="vm.getTickets()" /></th>
+                                <th width="190"><input type="text" ng-model="vm.ticketNumber" ng-change="vm.getTickets()" /></th>
+                                <th width="250"><md-datepicker ng-model="vm.deliveryDate" md-placeholder="Enter date" ng-change="vm.getTickets()"></md-datepicker></th>
+                                <th width="110"><input type="text" ng-model="vm.invoiceNumber"  ng-change="vm.getTickets()" /></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="ticket in vm.tickets | limitTo : vm.pageSize">
+                            <td width="150">{{ticket.accountNumber}}</td>
+                            <td width="190">{{ticket.payerAccount}}</td>
+                            <td width="190">{{ticket.ticketNumber}}</td>
+                            <td width="250">{{ticket.deliveryDate | date : "dd/MM/yyyy" }}</td>
+                            <td width="110">{{ticket.invoiceNumber}}</td>
+                            <td width="120">
+                                <button type="button" class="button delete" ng-click=""></button>
+                                <button type="button" class="button delete" ng-click=""></button>
+                                <button type="button" class="button delete" ng-click=""></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <uib-pagination boundary-links="true" total-items="vm.totalTickets" items-per-page="vm.pageSize" ng-change="vm.pageChanged()"
+                                    ng-model="vm.currentPageNumber" class="pagination-sm" previous-text="Prev" next-text="Next" first-text="First" last-text="Last"></uib-pagination>
+                    <div class="fr" style="margin-right: 20px;">
+                        Show
+                        <select id="rows-per-page" ng-model="vm.pageSize" ng-change="vm.pageChanged()" class="input-sm">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                        items per page
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

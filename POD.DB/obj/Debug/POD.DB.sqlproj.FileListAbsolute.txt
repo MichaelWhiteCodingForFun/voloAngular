@@ -1,0 +1,5 @@
+C:\Users\michael\Source\Workspaces\volo\POD.DB\bin\Debug\POD.DB.dacpac
+C:\Users\michael\Source\Workspaces\volo\POD.DB\bin\Debug\POD.DB.dll
+C:\Users\michael\Source\Workspaces\volo\POD.DB\bin\Debug\POD.DB.pdb
+C:\Users\michael\Source\Workspaces\volo\POD.DB\obj\Debug\POD.DB.dll
+C:\Users\michael\Source\Workspaces\volo\POD.DB\obj\Debug\POD.DB.pdb

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.edmgroup.co.uk/edmapi" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://tempuri.org/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="EDMOnlineService" targetNamespace="http://www.edmgroup.co.uk/edmapi" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://tempuri.org/" location="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?wsdl=wsdl0" />
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://www.edmgroup.co.uk/edmapi/Imports">
+      <xsd:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd0" namespace="http://www.edmgroup.co.uk/edmapi" />
+      <xsd:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/EDM.WebServices.WebServiceErrorHandler" />
+      <xsd:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/EDM.API.AccessControl.Model" />
+      <xsd:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/EDM.API.EDMOnline.Model.RecordsManagement.RSSQL" />
+      <xsd:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/EDM.API.EDMOnline.Model" />
+      <xsd:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/EDM.WebServices.DataContracts" />
+      <xsd:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="https://eolt01.edmonline.com/Services/EDMOnlineService.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/EDM.WebServices.External.EDMOnline.Contracts" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="DocumentManagement_DocumentSearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:DocumentSearch" />
+  </wsdl:message>
+  <wsdl:message name="DocumentManagement_DocumentSearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DocumentSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="DocumentManagement_DocumentSearch_EDMServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/EDM.WebServices.WebServiceErrorHandler" name="detail" element="q1:EDMServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="DocumentManagement_UpdateIndexData_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateIndexData" />
+  </wsdl:message>
+  <wsdl:message name="DocumentManagement_UpdateIndexData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateIndexDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="DocumentManagement_UpdateIndexData_EDMServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/EDM.WebServices.WebServiceErrorHandler" name="detail" element="q2:EDMServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="DocumentManagement_DocumentRetrieve_InputMessage">
+    <wsdl:part name="parameters" element="tns:DocumentRetrieve" />
+  </wsdl:message>
+  <wsdl:message name="DocumentManagement_DocumentRetrieve_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DocumentRetrieveResponse" />
+  </wsdl:message>
+  <wsdl:message name="DocumentManagement_DocumentRetrieve_EDMServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/EDM.WebServices.WebServiceErrorHandler" name="detail" element="q3:EDMServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ServiceManagement_HealthCheck_InputMessage">
+    <wsdl:part name="parameters" element="tns:HealthCheck" />
+  </wsdl:message>
+  <wsdl:message name="ServiceManagement_HealthCheck_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HealthCheckResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DocumentManagement">
+    <wsdl:operation name="DocumentSearch">
+      <wsdl:input wsaw:Action="http://www.edmgroup.co.uk/edmapi/DocumentManagement/DocumentSearch" message="tns:DocumentManagement_DocumentSearch_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.edmgroup.co.uk/edmapi/DocumentManagement/DocumentSearchResponse" message="tns:DocumentManagement_DocumentSearch_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.edmgroup.co.uk/edmapi/DocumentManagement/DocumentSearchEDMServiceFaultFault" name="EDMServiceFaultFault" message="tns:DocumentManagement_DocumentSearch_EDMServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateIndexData">
+      <wsdl:input wsaw:Action="http://www.edmgroup.co.uk/edmapi/DocumentManagement/UpdateIndexData" message="tns:DocumentManagement_UpdateIndexData_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.edmgroup.co.uk/edmapi/DocumentManagement/UpdateIndexDataResponse" message="tns:DocumentManagement_UpdateIndexData_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.edmgroup.co.uk/edmapi/DocumentManagement/UpdateIndexDataEDMServiceFaultFault" name="EDMServiceFaultFault" message="tns:DocumentManagement_UpdateIndexData_EDMServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DocumentRetrieve">
+      <wsdl:input wsaw:Action="http://www.edmgroup.co.uk/edmapi/DocumentManagement/DocumentRetrieve" message="tns:DocumentManagement_DocumentRetrieve_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.edmgroup.co.uk/edmapi/DocumentManagement/DocumentRetrieveResponse" message="tns:DocumentManagement_DocumentRetrieve_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://www.edmgroup.co.uk/edmapi/DocumentManagement/DocumentRetrieveEDMServiceFaultFault" name="EDMServiceFaultFault" message="tns:DocumentManagement_DocumentRetrieve_EDMServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceManagement">
+    <wsdl:operation name="HealthCheck">
+      <wsdl:input wsaw:Action="http://www.edmgroup.co.uk/edmapi/IEDMAPIWebService/HealthCheck" message="tns:ServiceManagement_HealthCheck_InputMessage" />
+      <wsdl:output wsaw:Action="http://www.edmgroup.co.uk/edmapi/IEDMAPIWebService/HealthCheckResponse" message="tns:ServiceManagement_HealthCheck_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:service name="EDMOnlineService">
+    <wsdl:port name="BasicHttpBinding_DocumentManagement" binding="i0:BasicHttpBinding_DocumentManagement">
+      <soap:address location="https://eolt01.edmonline.com/Services/EDMOnlineService.svc/DocumentManagement" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_ServiceManagement" binding="i0:BasicHttpBinding_ServiceManagement">
+      <soap:address location="https://eolt01.edmonline.com/Services/EDMOnlineService.svc/ServiceManagement" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

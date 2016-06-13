@@ -1,0 +1,13 @@
+C:\Users\michael\Source\Workspaces\volo\POD.Utilities\bin\Debug\Templates\Report.txt
+C:\Users\michael\Source\Workspaces\volo\POD.Utilities\bin\Debug\Templates\ResetPassword.txt
+C:\Users\michael\Source\Workspaces\volo\POD.Utilities\bin\Debug\Templates\SetPassword.txt
+C:\Users\michael\Source\Workspaces\volo\POD.Utilities\bin\Debug\POD.Utilities.dll
+C:\Users\michael\Source\Workspaces\volo\POD.Utilities\bin\Debug\POD.Utilities.pdb
+C:\Users\michael\Source\Workspaces\volo\POD.Utilities\bin\Debug\POD.Entities.dll
+C:\Users\michael\Source\Workspaces\volo\POD.Utilities\bin\Debug\DapperExtensions.dll
+C:\Users\michael\Source\Workspaces\volo\POD.Utilities\bin\Debug\POD.Entities.pdb
+C:\Users\michael\Source\Workspaces\volo\POD.Utilities\bin\Debug\NLog.xml
+C:\Users\michael\Source\Workspaces\volo\POD.Utilities\bin\Debug\DapperExtensions.pdb
+C:\Users\michael\Source\Workspaces\volo\POD.Utilities\obj\Debug\POD.Utilities.csprojResolveAssemblyReference.cache
+C:\Users\michael\Source\Workspaces\volo\POD.Utilities\obj\Debug\POD.Utilities.dll
+C:\Users\michael\Source\Workspaces\volo\POD.Utilities\obj\Debug\POD.Utilities.pdb
